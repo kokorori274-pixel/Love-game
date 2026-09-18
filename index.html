@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Love Story ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f6, #ffe4ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.page {
+    display: none;
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    padding: 25px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page.active {
+    display: flex;
+}
+
+.card {
+    width: 100%;
+    background: rgba(255,255,255,0.85);
+    padding: 30px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(255, 80, 130, 0.2);
+}
+
+.heart {
+    font-size: 65px;
+    animation: beat 1s infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+h1 {
+    color: #ff4f81;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #ff4f81;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    padding: 13px 24px;
+    margin: 7px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.main-btn {
+    background: #ff5c8a;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 92, 138, 0.3);
+}
+
+.main-btn:hover {
+    transform: scale(1.05);
+}
+
+.choice {
+    background: white;
+    color: #ff4f81;
+    border: 2px solid #ff9db8;
+}
+
+.choice:hover {
+    background: #ffedf3;
+}
+
+.hidden {
+    display: none;
+}
+
+.big-number {
+    font-size: 55px;
+    font-weight: bold;
+    color: #ff4f81;
+    margin: 15px 0;
+}
+
+.final-title {
+    font-family: cursive;
+    font-size: 28px;
+    color: #ff3f78;
+    line-height: 1.5;
+}
+
+.love-message {
+    font-size: 17px;
+    color: #555;
+}
+
+.photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff9db8;
+    margin-bottom: 20px;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 22px;
+    animation: fall 4s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.small {
+    font-size: 13px;
+    color: #999;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+    <div class="card">
+        <div class="heart">❤️</div>
+
+        <h1>Hey My Love...</h1>
+
+        <p>
+            I made a little surprise game<br>
+            just for you. 💕
+        </p>
+
+        <button class="main-btn" onclick="nextPage(2)">
+            Start the Game 💌
+        </button>
+    </div>
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+    <div class="card">
+
+        <h2>One Little Question 💭</h2>
+
+        <p>
+            Do you know how long<br>
+            we've been together?
+        </p>
+
+        <button class="choice" onclick="wrongAnswer()">
+            2 Years
+        </button>
+
+        <button class="choice" onclick="wrongAnswer()">
+            3 Years
+        </button>
+
+        <button class="choice" onclick="correctAnswer()">
+            4 Years & 8 Months ❤️
+        </button>
+
+        <p id="answerMessage" class="small"></p>
+    </div>
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+    <div class="card">
+
+        <div class="heart">💖</div>
+
+        <h2>You Remember! 🥰</h2>
+
+        <div class="big-number">
+            4 ❤️ 8
+        </div>
+
+        <p>
+            4 Years and 8 Months<br>
+            of our little love story.
+        </p>
+
+        <button class="main-btn" onclick="nextPage(4)">
+            Continue ✨
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+    <div class="card">
+
+        <div class="heart">💞</div>
+
+        <h2>One More Thing...</h2>
+
+        <p>
+            Through all the days,<br>
+            the happy moments,<br>
+            the silly moments,<br>
+            and everything between...
+        </p>
+
+        <button class="main-btn" onclick="nextPage(5)">
+            Open My Message 💌
+        </button>
+
+    </div>
+</section>
+
+
+<!-- FINAL PAGE -->
+<section class="page" id="page5">
+    <div class="card">
+
+        <!--
+        ဓာတ်ပုံထည့်ချင်ရင် အောက်က code ကို uncomment လုပ်ပါ။
+
+        <img src="photo.jpg" class="photo">
+        -->
+
+        <div class="heart">❤️</div>
+
+        <h1 class="final-title">
+            Congratulations for<br>
+            4 Years and 8 Monthsary
+        </h1>
+
+        <br>
+
+        <p class="love-message">
+            Thank you for being a beautiful part
+            of my life. ❤️
+        </p>
+
+        <p class="love-message">
+            4 Years 8 Months isn't just a number...
+            <br>
+            it's thousands of little memories
+            that I will always treasure. 🥺💕
+        </p>
+
+        <p class="love-message">
+            Let's make many more beautiful memories
+            together. 💗
+        </p>
+
+        <p>
+            <b>Happy 4 Years & 8 Monthsary! 💕</b>
+        </p>
+
+        <button class="main-btn" onclick="celebrate()">
+            ❤️ Love You ❤️
+        </button>
+
+    </div>
+</section>
+
+
+<script>
+
+function nextPage(number) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page" + number).classList.add("active");
+}
+
+
+function wrongAnswer() {
+
+    const message = document.getElementById("answerMessage");
+
+    message.innerHTML =
+        "ဟယ်... မမှတ်မိဘူးလား 🥺💕 Try again!";
+
+}
+
+
+function correctAnswer() {
+
+    const message = document.getElementById("answerMessage");
+
+    message.innerHTML =
+        "ဟုတ်တယ်! ❤️ You got it!";
+
+    setTimeout(() => {
+        nextPage(3);
+    }, 1000);
+
+}
+
+
+function celebrate() {
+
+    const symbols = ["❤️", "💕", "💖", "💗", "✨", "🌸"];
+
+    for (let i = 0; i < 50; i++) {
+
+        const item = document.createElement("div");
+
+        item.className = "confetti";
+
+        item.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left =
+            Math.random() * 100 + "vw";
+
+        item.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        item.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => {
+            item.remove();
+        }, 5000);
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
